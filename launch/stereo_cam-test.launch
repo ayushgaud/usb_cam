@@ -1,6 +1,6 @@
 <launch>
   <node name="usb_cam" pkg="usb_cam" type="usb_cam_stereo_node" output="screen" >
-    <param name="video_device" value="/dev/video0" />
+    <param name="video_device" value="/dev/video1" />
     <param name="image_width" value="1280" />
     <param name="image_height" value="480" />
     <param name="pixel_format" value="yuyv" />
@@ -8,11 +8,11 @@
     <param name="io_method" value="mmap"/>
   </node>
   <node name="image_view_l" pkg="image_view" type="image_view" respawn="false" output="screen">
-    <remap from="image" to="/camera/image_left"/>
+    <remap from="image" to="/camera/left/image_raw"/>
     <param name="autosize" value="true" />
   </node>
   <node name="image_view_r" pkg="image_view" type="image_view" respawn="false" output="screen">
-    <remap from="image" to="/camera/image_right"/>
+    <remap from="image" to="/camera/right/image_raw"/>
     <param name="autosize" value="true" />
   </node>
 </launch>
