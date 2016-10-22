@@ -1,14 +1,15 @@
 <launch>
   <node name="usb_cam" pkg="usb_cam" type="usb_cam_stereo_node" output="screen" >
     <param name="video_device" value="/dev/video1" />
-    <param name="image_width" value="2560" />
-    <param name="image_height" value="720" />
+    <param name="image_width" value="1344" />
+    <param name="image_height" value="376" />
     <param name="pixel_format" value="yuyv" />
     <param name="camera_frame_id" value="Stereo" />
     <param name="left_camera_name" value="left" />
     <param name="reft_camera_name" value="right" />
-    <param name="io_method" value="mmap"/>
-  </node>
+    <param name="io_method" value="userptr"/>
+    <param name="framerate" value="30" />
+ </node>
   <node name="image_view_l" pkg="image_view" type="image_view" respawn="false" output="screen">
     <remap from="image" to="/camera/left/image_raw"/>
     <param name="autosize" value="true" />
